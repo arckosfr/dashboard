@@ -18,15 +18,26 @@ function set_json($data) {
   
 if ($value == 'new') {
 	$data=get_json();
-	$last=end($data);
-	$last_id=$last['id'];
-	$data[] = array(
-    'id'             => ++$last_id,
-    'color'          => '',
-    'titre'         => '',
-    'lien'          => '',
-    'icone'           => '');
-    set_json($data);
+	if (empty($data)) {
+		$data[] = array(
+			'id'             => '0'
+			'color'          => '',
+			'titre'         => '',
+			'lien'          => '',
+			'icone'           => '');
+			set_json($data);
+	}
+	else {
+		$last=end($data);
+		$last_id=$last['id'];
+		$data[] = array(
+	    'id'             => ++$last_id,
+	    'color'          => '',
+	    'titre'         => '',
+	    'lien'          => '',
+	    'icone'           => '');
+	    set_json($data);
+	}
 }
 
 else {
