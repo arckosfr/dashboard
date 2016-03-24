@@ -77,7 +77,7 @@
 
 	<div class="container">
   <div class="panel panel-default">
-  <div class="panel-heading">Administration</div>
+  <div class="panel-heading">Administration | <button name="button" id=new>Nouvelle Tile</button></div>
   <div class="panel-body">    
   <table class="table table-bordered table-striped">
     <thead>
@@ -108,10 +108,22 @@
 <script src="js/jquery.jeditable.min.js"></script>
 <script>$(document).ready(function() {
       $('.editable').editable('save.php', {
-      	event     : "dblclick",
         callback : function(value, settings) {
          window.location.reload();
     	}});
-});</script>
+});
+	$(document).ready(function() {
+	    $('#new').click(function() {
+	    	$.post('save.php', 
+	    	{ 
+	    		value : 'new'
+	    	},
+	    	function(value, settings) {
+	         window.location.reload();
+    		},
+    		"text"
+    	)});
+	});
+</script>
 </body>
 </html>
